@@ -14,14 +14,6 @@
   animation: appear 1s forwards;
 }
 
-.btn {
-  position: absolute;
-  right: 0.5rem;
-  transform: translateY(-50%);
-  top: 2rem;
-  margin-bottom: 0;
-}
-
 .resultMessage {
   margin: 10px 0 0 20px;
 }
@@ -34,5 +26,25 @@
   100% {
     opacity: 1;
     transform: translateY(0%);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .btn {
+    position: absolute;
+    right: 0.5rem;
+    transform: translateY(-50%);
+    top: 2rem;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .btn {
+    position: relative;
+    margin-top: 1rem;
+  }
+  .root {
+    margin: 0px 40px 0px 40px;
   }
 }
