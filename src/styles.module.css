@@ -39,12 +39,12 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 960px) {
   .btn {
     position: relative;
     margin-top: 1rem;
   }
   .root {
-    margin: 0px 40px 0px 40px;
+    margin: 0px 20px 0px 20px;
   }
 }

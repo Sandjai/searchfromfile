@@ -14,7 +14,7 @@
   height: 2rem;
   outline: none;
   border: 2px solid #ccc;
-  padding-right: 200px;
+
   background-color: rgba(146, 146, 146, 0.5);
 }
 .field > input[type="text"]::-webkit-input-placeholder {
@@ -36,4 +36,16 @@
 .field > input[type="text"]:focus {
   outline: none;
   border-color: #66afe9;
+}
+
+@media screen and (min-width: 961px) {
+  .field > input[type="text"] {
+    padding-right: 200px;
+  }
+}
+
+@media screen and (max-width: 767px) and (min-width: 960px) {
+  .field > input[type="text"] {
+    padding-right: 150px;
+  }
 }
