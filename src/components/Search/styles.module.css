@@ -1,3 +1,39 @@
 .error {
   color: #cb132d;
+  margin: 10px 0 0 20px;
+}
+
+.field {
+  position: relative;
+}
+
+.field > input[type="text"] {
+  font-size: 21px;
+  border-radius: 37px;
+  padding: 15px 37px;
+  height: 2rem;
+  outline: none;
+  border: 2px solid #ccc;
+  padding-right: 200px;
+  background-color: rgba(146, 146, 146, 0.5);
+}
+.field > input[type="text"]::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #ffffff;
+}
+.field > input[type="text"]:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #ffffff;
+}
+.field > input[type="text"]::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #ffffff;
+}
+.field > input[type="text"]:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #ffffff;
+}
+.field > input[type="text"]:focus {
+  outline: none;
+  border-color: #66afe9;
 }

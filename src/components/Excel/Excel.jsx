@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
-export const Excel = ({ setExcelData }) => {
+import Button from "../Button/Button";
+import styles from "./styles.module.css";
+export const Excel = ({ setExcelData, className }) => {
   /* Load sample data once */
   useEffect(() => {
     /* Starting CSV data -- change data here */
@@ -18,34 +20,49 @@ export const Excel = ({ setExcelData }) => {
     /* Create HTML table */
     setExcelData(XLSX.utils.sheet_to_html(ws, { id: "js-excelTable" }));
   }, []);
+  const hiddenFileInput = React.useRef(null);
+  function onClick(e) {
+    hiddenFileInput.current.click();
+  }
+
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <>
       {/* Import Button */}
-      <input
-        type="file"
-        onChange={async (e) => {
-          /* get data as an ArrayBuffer */
-          const file = e.target.files[0];
-          const data = await file.arrayBuffer();
 
-          /* parse and load first worksheet */
-          const wb = XLSX.read(data);
+      <div className={`${className} ${styles.root}`}>
+        <input
+          type="file"
+          ref={hiddenFileInput}
+          style={{ display: "none" }}
+          onChange={async (e) => {
+            /* get data as an ArrayBuffer */
+            const file = e.target.files[0];
+            const data = await file.arrayBuffer();
 
-          const ws = wb.Sheets[wb.SheetNames[0]];
+            /* parse and load first worksheet */
+            const wb = XLSX.read(data);
 
-          const values = [];
+            const ws = wb.Sheets[wb.SheetNames[0]];
 
-          for (let item of XLSX.utils.sheet_to_json(ws, {
-            id: "js-excelTable",
-          })) {
-            //  console.log("item", item, item["Name"]);
-            values.push(item["Name"]);
-          }
+            const values = [];
 
-          setExcelData(values);
-        }}
-      />
+            for (let item of XLSX.utils.sheet_to_json(ws, {
+              id: "js-excelTable",
+            })) {
+              //  console.log("item", item, item["Name"]);
+              values.push(item["Name"]);
+            }
+
+            setExcelData(values);
+            setLoaded(true);
+          }}
+        />
+        <Button onClick={onClick}>
+          {loaded ? "Загружено" : "Загрузить файл"}
+        </Button>
+      </div>
 
       {/* Show HTML preview */}
     </>

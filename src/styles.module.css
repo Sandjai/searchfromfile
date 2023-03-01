@@ -1,0 +1,38 @@
+.app {
+  min-width: 100vw;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.root {
+  max-width: 650px;
+  height: 100%;
+  animation: appear 1s forwards;
+}
+
+.btn {
+  position: absolute;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  top: 2rem;
+  margin-bottom: 0;
+}
+
+.resultMessage {
+  margin: 10px 0 0 20px;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}

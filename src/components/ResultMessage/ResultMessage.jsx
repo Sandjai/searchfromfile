@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./styles.module.css";
-const ResultMessage = ({ result }) => {
+const ResultMessage = ({ result, className }) => {
   return (
     <div>
-      {result && result !== null ? (
-        <div className={styles.success}>Номер найден</div>
-      ) : !result && result !== null ? (
-        <div className={styles.fail}>Номер не найден</div>
+      {result === true ? (
+        <div className={`${className} ${styles.success}`}>Номер найден</div>
+      ) : result === false ? (
+        <div className={`${className} ${styles.fail}`}>Номер не найден</div>
       ) : (
         ""
       )}
